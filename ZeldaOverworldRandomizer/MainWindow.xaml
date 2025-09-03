@@ -1,0 +1,241 @@
+﻿<Window x:Class="ZeldaOverworldRandomizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+        xmlns:local="clr-namespace:ZeldaOverworldRandomizer"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Icon="Assets/icon.png"
+        UseLayoutRounding="True"
+        Title="{Binding WindowTitle}"
+        Height="520" Width="600" MinWidth="800" MinHeight="520" d:DataContext="{d:DesignInstance }">
+
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
+    </Window.Style>
+
+    <Grid Name="CompleteForm">
+        <Grid Name="LoadRomForm">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Row = "0" Margin="10" Width="254" Height="200" FontSize="30" Click="LoadRom">
+                <Image Source="Assets\loadIcon.png" />
+            </Button>
+            
+            <Button Grid.Row="1" Margin="20 0 10 20" Width="254"   Click="PopUpCompatibleRomVersions" Content="Compatible Rom Versions" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}" />
+            <Button Grid.Row="2" Margin="20 0 10 20" Width="254"   Click="PopUpZ1RHelp" Content="Using Zelda 1 Randomizer Too?" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}" />
+            <Button Grid.Row="3" Margin="20 0 10 20" Width="254"   Click="PopUpAutoMapperInstructions" Content="How to Use the AutoMapper" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}" />
+        </Grid>
+
+        <Grid Name="RandomizerForm" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="185" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="0 20 0 0">
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="150"
+                                    ToolTip="The dungeons will be hidden behind Bombable Walls or Burnable Bushes">
+                                    All Dungeons: Bomb/Burn
+                                </TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=HideNormalDungeons, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="150"
+                                    ToolTip="Dungeon 4 will appear on an island that requires the Raft.">
+                                    Dungeon 4: Raft Island
+                                </TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=HideDungeon4, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="150"
+                                    ToolTip="Dungeon 7 will be hidden under a lake that requires the Recorder.">
+                                    Dungeon 7: Recorder Lake
+                                </TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=HideDungeon7, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="150"
+                                    ToolTip="Dungeon 8 will appear on the Secret Screen where you walk north through a wall to reach it.">
+                                    Dungeon 8: Secret Screen
+                                </TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=HideDungeon8, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="150"
+                                    ToolTip="Dungeon 9 will appear behind a burnable bush or bombable wall.">
+                                    Dungeon 9: Bomb/Burn
+                                </TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=HideDungeon9, Mode=TwoWay}" IsEnabled="{Binding Path=EnableDungeon9Box, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="150"
+                                    ToolTip="Will a spawn a cave with a hint to which Biome dungeon 9 is in.">
+                                    Give Dungeon 9 Hint
+                                </TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=Dungeon9Hint, Mode=TwoWay}" Margin="0 0 0 10" IsEnabled="{Binding Path=EnabledDungeon9HintBox, Mode=TwoWay}"/>
+                        </StackPanel>
+                        
+                    </StackPanel>
+
+                    <StackPanel Margin="0 20 0 0">
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="Will build a biome for Kakariko Village">Include Kakariko Village</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=IncludeKakariko, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="Will replace one of the regular forests with a Ghost Forest">Include Ghost Forest</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=IncludeGhostForest, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="Will attempt to build a River running through the map">Include River</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=IncludeRiver, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="On: Generates Beaches with additional decor. Off: Vanilla Beaches">Enhanced Beaches</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=GenerateEnhancedBeaches, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="On: Generates Deserts with additional decor. Off: Vanilla Deserts">Enhanced Deserts</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=GenerateEnhancedDeserts, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>                        
+                    </StackPanel>
+
+                    <StackPanel Margin="0 20 0 0">
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="Tiles for Burnable Bushes and Bombable Walls will be visually unique">Bomb/Burn Tiles Unique</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=DistinctSecretTiles, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="Show a preview of the map after it generates. Will generate a unique map for this seed. Saving the Rom will also save a PNG of the Map">Generate Map Preview</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=GenerateWithMapPreview, Mode=TwoWay}" Margin="0 0 0 10" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <StackPanel>
+                                <TextBlock Width="140" ToolTip="Show a preview of the map after it generates with Icons indicating what each screen contains. Will generate a unique map for this seed. Saving the Rom will also save a PNG of the Map">Generate Map Spoilers</TextBlock>
+                            </StackPanel>
+                            <CheckBox IsChecked="{Binding Path=GenerateWithMapSpoilers, Mode=TwoWay}" IsEnabled="{Binding Path=GenerateWithMapPreview, Mode=TwoWay}"
+                                      Margin="0 0 0 10" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <TextBlock Width="140">FlagSet</TextBlock>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <TextBox Width = "140" MaxLength="5" Text="{Binding Path=FlagSet, Mode=TwoWay}"></TextBox>
+                            <Button>Set</Button>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="20 0 20 5">
+                            <TextBlock Width="53">Presets</TextBlock>
+                            <ComboBox Width = "120" ItemsSource="{Binding PresetOptions, Mode=TwoWay}" SelectionChanged="SetPreset" SelectedItem="{Binding Path=SelectedPreset, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+
+            <Label Grid.Row="1" Visibility="Hidden" Name="GeneratingMapMessage" Margin="20 0 0 0" FontSize="30">Generating Map...</Label>
+            <StackPanel Grid.Row="1" Margin="20 0 0 0" Visibility="Hidden" Name="GeneratedMapMessage" Orientation="Horizontal">
+                <Label FontSize="30" Margin="0 0 20 0">Map Generated</Label>
+                <Button Height="30" Click="Save" Content="Save Rom" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}" />
+                <Button Height="30" Margin="20 0 0 0" Name="SaveRomAsButton" Click="SaveAs" Content="Save Rom As" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
+                        Visibility="Hidden" />
+            </StackPanel>
+
+            <Viewbox Grid.Row="2" Name="MapPreview" Visibility="Hidden" Margin="20 0 20 0" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality">
+                <Canvas Name="FullMapCanvas" MouseDown="ToggleSpoiler" />
+            </Viewbox>
+
+            <Label Grid.Row="2" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="20 0 20 0" Name="MapPreviewSpoilerShield" Visibility="Hidden" Background="#1F1F1F" Padding="20" MouseDown="ToggleSpoiler" FontStretch="Normal">Show Map Preview</Label>
+
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="125" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="140" />
+                </Grid.ColumnDefinitions>
+
+                <ComboBox Margin="0" Name="PaletteComboBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="125" Height="30" Grid.Column="1">
+                    <ComboBoxItem Content="Palette: Original" IsSelected="True" />
+                    <ComboBoxItem Content="Palette: Vintage" />
+                    <ComboBoxItem Content="Palette: Glacial" />
+                    <ComboBoxItem Content="Palette: Passion Fruit" />
+                    <ComboBoxItem Content="Palette: Midnight" />
+                    <ComboBoxItem Content="Palette: Bubblegum" />
+                    <ComboBoxItem Content="Palette: Deep" />
+                    <ComboBoxItem Content="Palette: Noir" />
+                </ComboBox>
+
+
+                <Label Grid.Column="2" Margin="10" HorizontalContentAlignment="Right" VerticalAlignment="Center">Seed</Label>
+                <TextBox Grid.Column="3" Margin="10" Text="{Binding Path=Seed, Mode=TwoWay}" />
+                <Button Grid.Column="4" Margin="10" Click="RandomizeSeed" Content="New Seed" />
+                <Button Grid.Column="5" Margin="20 10 10 10" Click="BuildMap" Content="Generate Map" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}" />
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+.idea
+.vscode
+.DS_Store
+node_modules
+/dist
+/build
+.vs
+
+
+/packages
+/UpgradeLog.htm
+/ZeldaOverworldRandomizer/bin
+/ZeldaOverworldRandomizer/obj
