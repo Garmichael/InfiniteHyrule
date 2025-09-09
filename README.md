@@ -14,6 +14,8 @@ If you'd like to support the development of this, and other projects I work on, 
 
 ### [Join the Discord](https://discord.gg/F4tpUHJsvj)
 
+---
+
 # Screenshots
 
 ![Screenshot](/Screenshots/applicationSS.png?raw=true&ver=1)
@@ -25,11 +27,7 @@ If you'd like to support the development of this, and other projects I work on, 
 
 ![Screenshot](/Screenshots/ss1.png) ![Screenshot](/Screenshots/ss2.png) ![Screenshot](/Screenshots/ss3.png) ![Screenshot](/Screenshots/ss4.png) ![Screenshot](/Screenshots/ss5.png) ![Screenshot](/Screenshots/ss6.png) ![Screenshot](/Screenshots/ss7.png) ![Screenshot](/Screenshots/ss8.png) ![Screenshot](/Screenshots/ss9.png) ![Screenshot](/Screenshots/ss10.png) ![Screenshot](/Screenshots/ss11.png) ![Screenshot](/Screenshots/ss12.png) ![Screenshot](/Screenshots/ss13.png) ![Screenshot](/Screenshots/ss14.png) ![Screenshot](/Screenshots/ss15.png) ![Screenshot](/Screenshots/ss16.png) ![Screenshot](/Screenshots/ss17.png) ![Screenshot](/Screenshots/ss18.png) ![Screenshot](/Screenshots/ss19.png) ![Screenshot](/Screenshots/ss20.png) ![Screenshot](/Screenshots/ss21.png) ![Screenshot](/Screenshots/ss22.png) ![Screenshot](/Screenshots/ss23.png) ![Screenshot](/Screenshots/ss24.png) ![Screenshot](/Screenshots/ss25.png) ![Screenshot](/Screenshots/ss26.png) ![Screenshot](/Screenshots/ss27.png) ![Screenshot](/Screenshots/ss28.png) ![Screenshot](/Screenshots/ss29.png) ![Screenshot](/Screenshots/ss30.png) ![Screenshot](/Screenshots/ss31.png) ![Screenshot](/Screenshots/ss32.png) ![Screenshot](/Screenshots/ss33.png) ![Screenshot](/Screenshots/ss34.png) ![Screenshot](/Screenshots/ss35.png) ![Screenshot](/Screenshots/ss36.png) ![Screenshot](/Screenshots/ss37.png) ![Screenshot](/Screenshots/ss38.png)
 
-## Credits
-
-Garret Bright - Development and Production of Infinite Hyrule
-
-**Special Thanks**
+## Special Thanks
 
 [Cyneprepou4uk](https://www.romhacking.net/forum/index.php?action=profile;u=75353) - Wrote an ASM patch for the original rom to expand the number of banks and give each screen its own unique layout, circumventing limitations for screen designs.
 
