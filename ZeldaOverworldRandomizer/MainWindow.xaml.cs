@@ -94,19 +94,15 @@ namespace ZeldaOverworldRandomizer {
 		}
 
 		private async void BuildMap(object sender, RoutedEventArgs e) {
-			SetSeed();
+			// SetSeed();
+			Utilities.SetSeed(Seed);
+			
 			SetUpUiElementsPreGeneration();
 
 			await Task.Delay(100);
 
 			OverworldBuilder.BuildOverworld();
 			SetUpUiElementsPostGeneration();
-		}
-
-		private void SetSeed() {
-			int flagSet = Utilities.GetIntFromHex(FrontEnd.MainWindow.FlagSet);
-
-			Utilities.SetSeed(Seed + flagSet);
 		}
 
 		private void SetUpUiElementsPreGeneration() {
@@ -121,19 +117,6 @@ namespace ZeldaOverworldRandomizer {
 			GeneratingMapMessage.Visibility = Visibility.Hidden;
 			GeneratedMapMessage.Visibility = Visibility.Visible;
 
-#if DEBUG
-			GenerateWithMapSpoilers = true;
-			MapPreviewBuilder.DrawFullMap();
-			SaveRomAsButton.Visibility = Visibility.Visible;
-
-			if (_showSpoilerShield) {
-				MapPreviewSpoilerShield.Visibility = Visibility.Visible;
-				MapPreview.Visibility = Visibility.Hidden;
-			} else {
-				MapPreviewSpoilerShield.Visibility = Visibility.Hidden;
-				MapPreview.Visibility = Visibility.Visible;
-			}
-#else
 			if (GenerateWithMapPreview) {
 				MapPreviewBuilder.DrawFullMap();
 			}
@@ -148,7 +131,6 @@ namespace ZeldaOverworldRandomizer {
 				MapPreviewSpoilerShield.Visibility = Visibility.Hidden;
 				MapPreview.Visibility = Visibility.Visible;
 			}
-#endif
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -165,7 +147,7 @@ namespace ZeldaOverworldRandomizer {
 				"\n\n" +
 				"Run your rom through Z1R, and then run the resulting rom through Infinite Hyrule." +
 				"\n\n" +
-				"Only versions 3.5.6 and higher of Z1R is supported. The Title Bar of Z1R will show its version number.\n" +
+				"Only versions 3.5.20 and higher of Z1R is supported. The Title Bar of Z1R will show its version number.\n" +
 				"-----------------------------------------------------\n\n" +
 				"Some flags can make the seed unbeatable or even crash the game." +
 				"\n\n" +
@@ -174,7 +156,7 @@ namespace ZeldaOverworldRandomizer {
 				"   Top Part:\n" +
 				"       Overworld Quest: 1st Quest" +
 				"\n\n" +
-				"   Caves Tab:\n" +
+				"   Overworld Tab:\n" +
 				"       Cave Shuffle: Vanilla\n" +
 				"       Force Overworld Block: Disabled\n" +
 				"       Mirror Overworld: Disabled" +
@@ -188,6 +170,9 @@ namespace ZeldaOverworldRandomizer {
 				"\n\n" +
 				"   Misc Tab:\n" +
 				"       Replace Book Fire with Explosion: Disabled\n" +
+				"       Race ROM: Disabled" +
+				"\n\n" +
+				"   Cosmetic Tab:\n" +
 				"       Select Swap: Pause";
 
 			MessageBox.Show(

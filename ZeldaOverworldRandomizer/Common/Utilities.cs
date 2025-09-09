@@ -31,6 +31,13 @@ namespace ZeldaOverworldRandomizer.Common {
 		public static void SetSeed(int seed) {
 			FrontEnd.MainWindow.Seed = seed;
 			_random = new Random(FrontEnd.MainWindow.Seed);
+
+			if (FrontEnd.MainWindow.GenerateWithMapPreview) {
+				_random.Next();
+				if (FrontEnd.MainWindow.GenerateWithMapSpoilers) {
+					_random.Next();
+				}
+			}
 		}
 
 		public static int GetRandomInt(int min, int max) {

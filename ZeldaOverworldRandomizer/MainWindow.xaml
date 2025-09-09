@@ -197,8 +197,6 @@
             <StackPanel Grid.Row="1" Margin="20 0 0 0" Visibility="Hidden" Name="GeneratedMapMessage" Orientation="Horizontal">
                 <Label FontSize="30" Margin="0 0 20 0">Map Generated</Label>
                 <Button Height="30" Click="Save" Content="Save Rom" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}" />
-                <Button Height="30" Margin="20 0 0 0" Name="SaveRomAsButton" Click="SaveAs" Content="Save Rom As" Style="{DynamicResource {x:Static adonisUi:Styles.AccentButton}}"
-                        Visibility="Hidden" />
             </StackPanel>
 
             <Viewbox Grid.Row="2" Name="MapPreview" Visibility="Hidden" Margin="20 0 20 0" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality">

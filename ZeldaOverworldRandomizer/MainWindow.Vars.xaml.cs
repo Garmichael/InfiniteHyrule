@@ -5,7 +5,7 @@ using ZeldaOverworldRandomizer.Common;
 
 namespace ZeldaOverworldRandomizer {
 	public partial class MainWindow : INotifyPropertyChanged {
-		private string VersionNumber = "2.20";
+		private string VersionNumber = "2.21";
 
 		public string WindowTitle => "Infinite Hyrule - Zelda Overworld Randomizer       v" + VersionNumber;
 		private bool _generateWithMapPreview;

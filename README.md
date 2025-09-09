@@ -2,9 +2,7 @@
 
 **Infinite Hyrule**
 
-This randomizer procedurally generates a whole new overworld map.
-
-[Follow Development](https://www.romhacking.net/forum/index.php?topic=31345) on Romhacking.net
+This randomizer procedurally generates a whole new overworld map for the original Legend of Zelda for the NES.
 
 My other projects can be found at [My Studio Site](https://www.stormgardenstudio.com/)
 
@@ -15,6 +13,11 @@ If you'd like to support the development of this, and other projects I work on, 
 ### [Join the Discord](https://discord.gg/F4tpUHJsvj)
 
 # Change Log
+
+**V 2.21**
+
+- Updated Z1R Compatibility Guide.
+- Fixed a bug where Generating a new map would also generate a new seed.
 
 **v 2.20**
 
